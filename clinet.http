@@ -1,0 +1,10 @@
+### error handler
+
+POST http://localhost:3000/some HTTP/1.1
+Content-Type: application/json
+
+
+### register user
+
+POST http://localhost:3000/api/user/register HTTP/1.1
+Content-Type: application/json
