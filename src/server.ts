@@ -2,9 +2,15 @@ import express from "express";
 import * as dotenv from "dotenv";
 import router from "./routes";
 import { errorHandler } from "./middlewares/errorHandler";
+import { connectDB } from "./config/database";
 
 const app = express();
+app.use(express.json());
 dotenv.config();
+
+const mongoUrl = process.env.MONGO_URL || "ERROR";
+
+connectDB(mongoUrl);
 
 const PORT = process.env.PORT || 5000;
 
