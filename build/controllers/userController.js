@@ -12,12 +12,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = exports.register = void 0;
 const user_service_1 = require("../service/user.service");
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const body = req.body();
+    const body = req.body;
     const registerService = yield (0, user_service_1.registerUser)(body);
+    if (registerService.status) {
+        res.status(registerService.status).json(registerService.error);
+        return;
+    }
     res.json(registerService);
+    return;
 });
 exports.register = register;
-const login = (_, res) => {
-    res.json("somee login");
-};
+const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const body = req.body;
+    const loginService = yield (0, user_service_1.loginUser)(body);
+    if (loginService.status) {
+        res.status(loginService.status).json(loginService.error);
+        return;
+    }
+    res.json(loginService);
+    return;
+});
 exports.login = login;

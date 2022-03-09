@@ -1,7 +1,12 @@
-interface userBody {
+interface registerBody {
   username: string;
   email: string;
   password: string;
 }
 
-export { userBody };
+interface loginBody {
+  email: string;
+  password: string;
+}
+
+export { registerBody, loginBody };
