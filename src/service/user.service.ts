@@ -36,22 +36,26 @@ const registerUser = async (body: registerBody) => {
 };
 
 const loginUser = async (body: loginBody) => {
-  const { email, password } = body;
-  const user = await User.findOne({ email });
-  if (!user) {
-    return { status: 404, error: "Email or password is incorrect" };
+  try {
+    const { email, password } = body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return { status: 404, error: "Email or password is incorrect" };
+    }
+    const comparePassword = await compare(password, user.password);
+
+    if (!comparePassword) {
+      return { status: 404, error: "Email or password is incorrect" };
+    }
+
+    const token = sign({ id: user._id }, JWT_SECRET, {
+      expiresIn: "1d",
+    });
+
+    return { token };
+  } catch (error) {
+    return { status: 404, error };
   }
-  const comparePassword = await compare(password, user.password);
-
-  if (!comparePassword) {
-    return { status: 404, error: "Email or password is incorrect" };
-  }
-
-  const token = sign({ id: user._id }, JWT_SECRET, {
-    expiresIn: "1d",
-  });
-
-  return { token };
 };
 
 export { registerUser, loginUser };
