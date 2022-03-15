@@ -9,11 +9,13 @@
     "express": "^4.17.3",
     "json-web-token": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
+    "mime-db": "^1.52.0",
     "mongoose": "^6.2.4",
     "socket.io": "^4.4.1"
   },
   "scripts": {
     "start:dev": "nodemon ./build/server.js",
+    "start": "node ./build/server.js",
     "build": "tsc --watch"
   },
   "devDependencies": {
