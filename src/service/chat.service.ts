@@ -20,4 +20,17 @@ const chatService = async (body: messageBody) => {
   }
 };
 
-export { chatService };
+const getAll = async (): Promise<any> => {
+  try {
+    const messages = await Message.find();
+    if (!messages) {
+      return { status: 404, error: "ERROR_IN_MESSAGES" };
+    }
+
+    return messages;
+  } catch (error) {
+    return { status: 404, error };
+  }
+};
+
+export { chatService, getAll };

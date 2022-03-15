@@ -3,10 +3,17 @@ import * as dotenv from "dotenv";
 import router from "./routes";
 import { errorHandler } from "./middlewares/errorHandler";
 import { connectDB } from "./config/database";
+import cors from "cors";
 
 const app = express();
-app.use(express.json());
 dotenv.config();
+
+const options: cors.CorsOptions = {
+  origin: ["*"],
+};
+app.use(cors(options));
+
+app.use(express.json());
 
 const mongoUrl = process.env.MONGO_URL || "ERROR";
 

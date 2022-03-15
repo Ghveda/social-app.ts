@@ -31,3 +31,46 @@ Content-Type: application/json
     "message": "This is a new message", 
     "username": "John"
 }
+
+
+
+### get messages
+GET https://sweeft-chat-app.herokuapp.com/api/chat/messages HTTP/1.1
+Content-Type: application/json
+
+
+// localhosts
+
+// user
+### register user
+POST http://localhost:9000/api/user/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "John",
+    "email": "John@gmail.com",
+    "password": "123"
+}
+
+### login user
+POST http://localhost:9000/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "123"
+}
+
+// messages
+### create message localhost
+POST http://localhost:9000/api/chat/message HTTP/1.1
+Content-Type: application/json
+
+{
+    "message": "This is a new message", 
+    "username": "John"
+}
+
+### get messages localhost
+GET http://localhost:9000/api/chat/messages HTTP/1.1
+Content-Type: application/json
