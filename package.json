@@ -15,7 +15,6 @@
     "mime-db": "^1.52.0",
     "mongoose": "^6.2.4",
     "socket.io": "^4.4.1",
-    "tsc": "^2.0.4",
     "typescript": "^4.6.2"
   },
   "scripts": {
