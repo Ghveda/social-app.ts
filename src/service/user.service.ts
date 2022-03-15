@@ -52,7 +52,7 @@ const loginUser = async (body: loginBody) => {
       expiresIn: "1d",
     });
 
-    return { token };
+    return { username: user.username, token };
   } catch (error) {
     return { status: 404, error };
   }
