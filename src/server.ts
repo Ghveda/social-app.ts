@@ -12,6 +12,13 @@ import { Server } from "socket.io";
 const main = async () => {
   const app = express();
   dotenv.config();
+  // Cors config
+  const options: cors.CorsOptions = {
+    origin: "*",
+    methods: ["GET", "POST"],
+    credentials: true,
+  };
+  app.use(cors(options));
 
   // Socket config
   const server = createServer(app);
@@ -20,14 +27,11 @@ const main = async () => {
   // junk
   const io = new Server(server);
   io.on("connection", (socket) => {
+    socket.on("message", (message) => {
+      console.log(message);
+    });
     console.log("some");
   });
-
-  // Cors config
-  const options: cors.CorsOptions = {
-    origin: ["*"],
-  };
-  app.use(cors(options));
 
   app.use(express.json());
 
