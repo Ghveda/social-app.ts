@@ -58,7 +58,7 @@ const loginUser = (body) => __awaiter(void 0, void 0, void 0, function* () {
         const token = (0, jsonwebtoken_1.sign)({ id: user._id }, constants_1.JWT_SECRET, {
             expiresIn: "1d",
         });
-        return { token };
+        return { username: user.username, token };
     }
     catch (error) {
         return { status: 404, error };
