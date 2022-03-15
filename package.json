@@ -1,6 +1,9 @@
 {
   "name": "social-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "17.6.0"
+  },
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
