@@ -25,12 +25,18 @@ const main = async () => {
   // await socket(server);
 
   // junk
-  const io = new Server(server);
+  const io = new Server(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST"],
+    },
+  });
+
   io.on("connection", (socket) => {
     socket.on("message", (message) => {
       console.log(message);
     });
-    console.log("some");
+    console.log("llUser is connected");
   });
 
   app.use(express.json());
@@ -45,7 +51,7 @@ const main = async () => {
   app.use("/api", router);
   app.use(errorHandler);
 
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log(`The sever is running on http://localhost:${PORT}`);
   });
 };
