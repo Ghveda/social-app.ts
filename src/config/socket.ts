@@ -1,18 +1,17 @@
 import { Server } from "socket.io";
 import emitter from "../config/eventemitter";
 
-const setupWS = async (server: any) => {
+const SetUp = (server: any) => {
   const io = new Server(server, {
     cors: {
       origin: "*",
       methods: ["GET", "POST"],
-      credentials: true,
     },
   });
-  io.on("connection", (socket) => {
-    console.log("something");
 
-    socket.emit("join", "Hi There!");
+  io.on("connection", (socket) => {
+    console.log("some");
+
     emitter.on("message", (message) => {
       socket.emit("message", message);
     });
@@ -20,7 +19,10 @@ const setupWS = async (server: any) => {
     socket.on("message", (message) => {
       console.log(message);
     });
+
+    socket.emit("message", "this is a new message");
   });
+  return io;
 };
 
-export default setupWS;
+export default SetUp;

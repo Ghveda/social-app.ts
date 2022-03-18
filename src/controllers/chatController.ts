@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { chatService, getAll } from "../service/chat.service";
+import { createMessageService, getAll } from "../service/chat.service";
 
-const chatController = async (req: Request, res: Response): Promise<void> => {
+const createMessage = async (req: Request, res: Response): Promise<void> => {
   const body = req.body;
-  const chat = await chatService(body);
+  const chat = await createMessageService(body);
 
   if (chat.error) {
     res.status(chat.status).json(chat.error);
@@ -26,4 +26,4 @@ const getMessages = async (req: Request, res: Response): Promise<void> => {
   return;
 };
 
-export { chatController, getMessages };
+export { createMessage, getMessages };

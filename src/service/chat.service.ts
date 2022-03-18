@@ -1,8 +1,9 @@
 import Message from "../models/Message";
 import { messageBody } from "../interface/messageInterface";
 import emitter from "../config/eventemitter";
+import Socket from "../config/socket";
 
-const chatService = async (body: messageBody) => {
+const createMessageService = async (body: messageBody) => {
   try {
     const { message, username } = body;
     const createMessage = await Message.create({
@@ -35,4 +36,4 @@ const getAll = async (): Promise<any> => {
   }
 };
 
-export { chatService, getAll };
+export { createMessageService, getAll };

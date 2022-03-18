@@ -63,7 +63,7 @@ Content-Type: application/json
 
 // messages
 ### create message localhost
-POST http://localhost:9000/api/chat/message HTTP/1.1
+POST http://localhost:9000/api/chat/create HTTP/1.1
 Content-Type: application/json
 
 {

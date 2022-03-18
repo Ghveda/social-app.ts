@@ -6,7 +6,7 @@ import { createServer } from "http";
 import router from "./routes";
 import { errorHandler } from "./middlewares/errorHandler";
 import { connectDB } from "./config/database";
-import socket from "./config/socket";
+import Socket from "./config/socket";
 import { Server } from "socket.io";
 
 const main = async () => {
@@ -25,19 +25,7 @@ const main = async () => {
   // await socket(server);
 
   // junk
-  const io = new Server(server, {
-    cors: {
-      origin: "http://localhost:3000",
-      methods: ["GET", "POST"],
-    },
-  });
-
-  io.on("connection", (socket) => {
-    socket.on("message", (message) => {
-      console.log(message);
-    });
-    console.log("llUser is connected");
-  });
+  Socket(server);
 
   app.use(express.json());
 
